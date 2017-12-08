@@ -7,7 +7,7 @@ Starting place for develoing a Bootstrap based Wordpress theme. Contains Dockerf
 - Docker
 - Docker Compose
 
-###Optional###
+### Optional ###
 
 - Make
 
