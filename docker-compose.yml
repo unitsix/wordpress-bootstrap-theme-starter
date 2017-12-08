@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress-theme-dev
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+    working_dir: /var/www/html
+    volumes:
+      - .\bootstrap-starter:/var/www/html/wp-content/themes/bootstrap-starter
+      - .\uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - .:/var/working
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
