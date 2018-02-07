@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				// ## LESS ##
 				// When LESS files change; complie and save them 
 				files: ['less/**/*.less'],
-				tasks: ['newer:less:compiler', 'newer:cssmin:style']
+				tasks: ['less:compiler', 'newer:cssmin:style']
 			},
 			js: {
 				// ## JS ##

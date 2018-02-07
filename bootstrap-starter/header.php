@@ -23,7 +23,30 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp-bootstrap-starter' ); ?></a>
     <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
-	<header id="masthead" class="site-header navbar-static-top" role="banner">
+    
+     <?php if(is_front_page() && !get_theme_mod( 'header_banner_visibility' )): ?>
+        <div id="page-sub-header" <?php if(has_header_image()) { ?>style="background-image: url('<?php header_image(); ?>');" <?php } ?>>
+            <div class="container">
+                <?php if(get_theme_mod( 'header_banner_title_setting' )): ?>
+                <h1>
+                    <?php
+                        echo get_theme_mod( 'header_banner_title_setting' );
+                    ?>
+                </h1>
+    			<?php endif; ?>
+                <?php if(get_theme_mod( 'header_banner_tagline_setting' )): ?>
+                <p>
+                    <?php
+                        echo get_theme_mod( 'header_banner_tagline_setting' );
+                    ?>
+                </p>
+    			<?php endif; ?>
+                <a href="#content" class="page-scroller"><i class="fa fa-fw fa-angle-down"></i></a>
+            </div>
+        </div>
+    <?php endif; ?>
+    
+	<header id="masthead" class="site-header navbar-static-top  <?php if(is_front_page() && !get_theme_mod( 'header_banner_visibility' )): ?>navbar-static-top-home transparent <?php endif; ?>" role="banner">
         <div class="container">
             <nav class="navbar navbar-expand-xl navbar-dark p-0">
                 <div class="navbar-brand">
@@ -36,15 +59,15 @@
                     <?php endif; ?>
 
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
                 </button>
 
                 <?php
                 wp_nav_menu(array(
                 'theme_location'    => 'primary',
                 'container'       => 'div',
-                'container_id'    => '',
+                'container_id'    => 'main_nav_items',
                 'container_class' => 'collapse navbar-collapse justify-content-end',
                 'menu_id'         => false,
                 'menu_class'      => 'navbar-nav',
@@ -53,36 +76,14 @@
                 'walker'          => new wp_bootstrap_navwalker()
                 ));
                 ?>
+                
+               
 
             </nav>
         </div>
 	</header><!-- #masthead -->
-    <?php if(is_front_page() && !get_theme_mod( 'header_banner_visibility' )): ?>
-        <div id="page-sub-header" <?php if(has_header_image()) { ?>style="background-image: url('<?php header_image(); ?>');" <?php } ?>>
-            <div class="container">
-                <h1>
-                    <?php
-                    if(get_theme_mod( 'header_banner_title_setting' )){
-                        echo get_theme_mod( 'header_banner_title_setting' );
-                    }else{
-                        echo 'Wordpress + Bootstrap';
-                    }
-                    ?>
-                </h1>
-                <p>
-                    <?php
-                    if(get_theme_mod( 'header_banner_tagline_setting' )){
-                        echo get_theme_mod( 'header_banner_tagline_setting' );
-                }else{
-                        echo esc_html__('To customize the contents of this header banner and other elements of your site, go to Dashboard > Appearance > Customize','wp-bootstrap-starter');
-                    }
-                    ?>
-                </p>
-                <a href="#content" class="page-scroller"><i class="fa fa-fw fa-angle-down"></i></a>
-            </div>
-        </div>
-    <?php endif; ?>
+   
 	<div id="content" class="site-content">
-		<div class="container">
+		<div class="main container">
 			<div class="row">
                 <?php endif; ?>

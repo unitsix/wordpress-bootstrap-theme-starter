@@ -1,0 +1,65 @@
+/* for fixing size of youtube vids */
+.entry-summary-video iframe{
+	max-height: 250px;
+}
+.main.container{
+	padding-top:15px;
+	min-height:100%;
+	height:auto;
+}
+.form-control {
+	background: none !important;
+	border: 0 solid black;
+}
+#main_nav_items .credits {
+	display: inline-block;	
+}
+.site-content{
+	min-height: ~"calc(100vh - 185px)";
+}
+
+element.style {
+    max-height: 369px;
+    border-bottom-width: 1px;
+}
+.album-grid {
+	padding: 0 5px;
+	text-align: center;
+	& img, & p {		
+		transition: .5s ease;
+	}
+	& img {	
+		width: 100%;
+		max-width: 260px;
+	}
+}
+@media screen and (min-width: 767px) {
+	.album-grid {
+		& p{
+			margin: -50% 0 50% 0;
+			opacity: 0;
+		}
+		& a:hover{
+			& + p{
+				opacity: 1;
+			}
+			& img{
+				opacity: 0.05;
+			}
+		}
+	}
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {
+	.album-grid {
+		padding: 0 50px !important;
+	}
+}
+@media screen and (min-width: 992px) {
+	.album-grid {
+		padding: 0 100px !important;
+	}
+}
+.iframe-container {
+    overflow:visible !important; 
+	-webkit-overflow-scrolling:touch !important;
+}

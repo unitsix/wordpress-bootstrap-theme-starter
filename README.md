@@ -19,43 +19,19 @@ Make sure you have set your environment variables properly or create a file `.en
 
 ## Make Usage ##
 
-MAKEFILE is still a work in progress 
+Starting place for develoing a Bootstrap based Wordpress theme. Contains Dockerfile with NodeJS and Grunt for linting.
 
-```bash
-# using . env.template for .env as an template
-
-$ make dotenv DOTENV=.env.template
-
-# OR 
-
-$ make .env
-```
-
-## Build Image##
+## Develop
 
 CD into your project folder
 
 ```bash
-$ make build
-
-# OR
-
-$ docker build -f Dockerfile . -t wordpress-theme-dev:1.0 .
-```
-
-
-## Develop ##
-
-CD into your project folder
-
-```bash
-$ make dev
-
-# OR
-
 $ docker-compose up
-$ docker exec -it wordpressbootstrapthemestarter_wordpress_1 /bin/bash
-$ cd /var/working
-$ npm install
+$ docker exec -it wordpressbootstrapthemestarter_npm_1 /bin/bash
+$ npm install #only required on first run
 $ grunt
 ```
+
+## Wordpress
+
+On first run or if containers are reset/removed, you will need to step throough the install wizard at localhost:8080 and set the theme to 'Bootstrap 4'

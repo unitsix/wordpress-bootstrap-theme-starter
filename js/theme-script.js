@@ -68,5 +68,15 @@ jQuery( function ( $ ) {
             'scrollTop': $target.offset().top
         }, 1000, 'swing');
     });
+	
+	var prevScroll = 0;
+	$(window).on('scroll', function(){
+		var nav = $('.navbar-static-top'),
+			navHome = $('.navbar-static-top-home'),
+	 		scrollTop = $(window).scrollTop();
+	  	nav.toggleClass('offscreen', scrollTop > prevScroll && scrollTop > 100);
+	  	navHome.toggleClass('transparent', scrollTop < 50);
+		prevScroll = scrollTop;
+	});
 
 });

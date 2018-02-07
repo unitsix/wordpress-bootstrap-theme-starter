@@ -1,6 +1,6 @@
 /*
-Theme Name: Bootstrap 4
-Theme URI: https://afterimagedesigns.com/wp-bootstrap-starter/
+Theme Name: Bootstrap
+Theme URI: https://github.com/unitsix/wordpress-bootstrap-theme-starter
 Author: unitsix
 Author URI: https://stackoverflow.com/story/unitsix
 Description:  Forked from the best WordPress Bootstrap starter theme by https://afterimagedesigns.com/.
@@ -504,13 +504,12 @@ object {
 --------------------------------------------------------------*/
 header#masthead {
   margin-bottom: 0;
-  background-color: #563d7c ;
+  background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   padding: .74rem 1rem;
-  border-bottom: 1px solid #9175bb ;
+  border-bottom: 0px solid #000 ;
 }
 .navbar-brand > a {
-  color: rgba(0, 0, 0, 0.9);
   font-size: 1.1rem;
   outline: medium none;
   text-decoration: none;
@@ -528,41 +527,61 @@ header#masthead {
   text-align: center;
   font-size: 1.25rem;
   background-size: cover !important;
+  background-position-x: center !important;
 }
 #page-sub-header h1 {
   line-height: 1;
-  font-size: 4rem;
-  color: #563e7c;
-  margin: 0 0 1rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
   border: 0;
   padding: 0;
 }
 #page-sub-header p {
   margin-bottom: 0;
   line-height: 1.4;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: #212529;
+  color: rgba(255, 255, 255, 0.75);
 }
-a.page-scroller {
-  color: #333;
-  font-size: 2.6rem;
-  display: inline-block;
-  margin-top: 2rem;
+@media screen and (max-width: 1200px) {
+  a.page-scroller {
+    color: #fff;
+    font-size: 2.6rem;
+    display: inline-block;
+    position: absolute;
+    bottom: 120px;
+    left: calc(50% - 22px);
+  }
+}
+@media screen and (min-width: 1199px) {
+  a.page-scroller {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  #page-sub-header {
+    min-height: calc(100vh);
+    max-height: 750px;
+  }
 }
 @media screen and (min-width: 768px) {
   #page-sub-header h1 {
-    font-size: 3.750rem;
+    font-size: 1.50rem;
     line-height: 1;
   }
   #page-sub-header {
-    font-size: 1.25rem;
+    font-size: .75rem;
+    min-height: calc(100vh);
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1199px) {
   #page-sub-header p {
     max-width: 43rem;
     margin: 0 auto;
+  }
+  #page-sub-header {
+    min-height: calc(100vh - 56px);
   }
 }
 /*--------------------------------------------------------------
@@ -572,8 +591,26 @@ a.page-scroller {
   padding-left: 0;
   padding-right: 0;
 }
+@media screen and (max-width: 1200px) {
+  #masthead.navbar-static-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    transition: transform 0.25s ease-in-out, opacity 0.55s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+  }
+  #masthead.navbar-static-top.offscreen {
+    transform: translateY(-100%);
+  }
+  #masthead.navbar-static-top-home.transparent {
+    opacity: 0.75;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5), inset 0 0px 0 rgba(0, 0, 0, 0.5);
+  }
+}
 #masthead .navbar-nav > li > a {
-  color: #cdbfe3;
+  color: #ffffff;
+  opacity: 0.5;
   padding: 0.5rem;
   font-weight: 500;
   font-size: 14px;
@@ -585,6 +622,11 @@ a.page-scroller {
 }
 .navbar-brand {
   height: auto;
+  margin-top: -5px;
+}
+.navbar-brand img {
+  max-height: 55px;
+  margin: -15px;
 }
 .navbar-toggle .icon-bar {
   background: #000 none repeat scroll 0 0;
@@ -627,7 +669,7 @@ a.page-scroller {
     top: 1.375rem;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   .dropdown-menu {
     border: medium none;
     margin-left: 1.250rem;
@@ -642,6 +684,11 @@ a.page-scroller {
   }
   .navbar-light .navbar-toggler {
     border: medium none;
+    outline: none;
+  }
+  .navbar-toggler,
+  .navbar-toggler:focus {
+    border: 0px solid transparent;
     outline: none;
   }
 }
@@ -687,6 +734,38 @@ a.page-scroller {
 .post-navigation .nav-previous a:hover,
 .post-navigation .nav-next a:hover {
   background: #eee none repeat scroll 0 0;
+}
+/*--------------------------------------------------------------
+## Navebar Toggler (hamburger)
+--------------------------------------------------------------*/
+.navbar-toggler span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 3px 0;
+  position: relative;
+  background: #ffffff;
+  border-radius: 3px;
+  transform-origin: 4px 0px;
+  opacity: .5;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+.navbar-toggler span:first-child {
+  transform-origin: 0% 0%;
+}
+.navbar-toggler span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+.navbar-toggler:not(.collapsed) span {
+  opacity: 1;
+  margin: 0;
+  transform: rotate(45deg) translate(-4px, -9px);
+}
+.navbar-toggler:not(.collapsed) span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(-3px, 8px);
+}
+.navbar-toggler:not(.collapsed) span:nth-last-child(3) {
+  opacity: 0;
 }
 /*--------------------------------------------------------------
 # Plugin Compatibility
@@ -757,9 +836,12 @@ a.page-scroller {
 # Footer
 --------------------------------------------------------------*/
 footer#colophon {
-  color: #99979c;
-  background-color: #f7f7f7;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.9);
   font-size: 85%;
+}
+footer#colophon .site-info {
+  opacity: 0.5;
 }
 .copyright {
   font-size: 0.875rem;
@@ -775,6 +857,67 @@ footer#colophon a {
     padding-bottom: 0.938rem;
     padding-top: 0.938rem;
   }
+}
+/* for fixing size of youtube vids */
+.entry-summary-video iframe {
+  max-height: 250px;
+}
+.main.container {
+  padding-top: 15px;
+  min-height: 100%;
+  height: auto;
+}
+.form-control {
+  background: none !important;
+  border: 0 solid black;
+}
+#main_nav_items .credits {
+  display: inline-block;
+}
+.site-content {
+  min-height: calc(100vh - 185px);
+}
+element.style {
+  max-height: 369px;
+  border-bottom-width: 1px;
+}
+.album-grid {
+  padding: 0 5px;
+  text-align: center;
+}
+.album-grid img,
+.album-grid p {
+  transition: .5s ease;
+}
+.album-grid img {
+  width: 100%;
+  max-width: 260px;
+}
+@media screen and (min-width: 767px) {
+  .album-grid p {
+    margin: -50% 0 50% 0;
+    opacity: 0;
+  }
+  .album-grid a:hover + p {
+    opacity: 1;
+  }
+  .album-grid a:hover img {
+    opacity: 0.05;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {
+  .album-grid {
+    padding: 0 50px !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .album-grid {
+    padding: 0 100px !important;
+  }
+}
+.iframe-container {
+  overflow: visible !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 /*--------------------------------------------------------------
 # Typography
@@ -815,6 +958,7 @@ h4 {
 h5 {
   font-size: 14px;
   line-height: 17.5px;
+  color: #808080;
 }
 p {
   margin-bottom: 1.5em;

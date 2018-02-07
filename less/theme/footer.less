@@ -2,9 +2,12 @@
 # Footer
 --------------------------------------------------------------*/
 footer#colophon {
-  color: #99979c;
-  background-color: #f7f7f7;
+  color: @navbar-brand-link-color;
+  background-color: @navbar-brand-bg-color;
   font-size: 85%;
+  & .site-info {
+  	opacity: @navbar-brand-base-opacity;
+  }
 }
 
 .copyright {
@@ -17,7 +20,7 @@ footer#colophon {
   color: inherit;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 767px){
   #masthead .navbar-nav > li > a {
     padding-bottom: 0.938rem;
     padding-top: 0.938rem;

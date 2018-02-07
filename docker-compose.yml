@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   wordpress:
-    image: wordpress-theme-dev
+    image: wordpress:latest
     restart: always
     ports:
       - 8080:80
@@ -13,10 +13,16 @@ services:
     volumes:
       - .\bootstrap-starter:/var/www/html/wp-content/themes/bootstrap-starter
       - .\uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-      - .:/var/working
 
   mysql:
     image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
+
+  npm:
+    image: ryanstockdale/docker-node-grunt:latest
+    restart: always
+    working_dir: /var/working
+    volumes:
+      - .:/var/working
